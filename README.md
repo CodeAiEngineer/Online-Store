@@ -22,6 +22,8 @@ request link=http://127.0.0.1:5000/register
 
 
 POST /register
+
+
 {
 "username": "JohnnyTaylorise",
 "password": "pW95fJ2@KXb",
