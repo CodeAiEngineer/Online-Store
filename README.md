@@ -10,9 +10,14 @@ if you want use all methods,do the following steps in order.
 Create user,change user's role to 'admin' and is_admin=True from directly DB, login, create category, create product, create cart.
 
 
+# EXAMPLE JSON REQUESTS:
 
 # CREATE USER:
-run main.py and request json like: req link=http://127.0.0.1:5000/register
+run main.py and request json like: 
+
+request link=http://127.0.0.1:5000/register
+
+
 POST /register
 {
 "username": "JohnnyTaylorise",
