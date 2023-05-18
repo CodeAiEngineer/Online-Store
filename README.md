@@ -1,7 +1,10 @@
 # Online Store
  Online Store created with Flask and other libraries.
 
-install requirements on cmd: pip install flask Flask-Session pymongo Flask-Testing pytest
+1-)install requirements on cmd: pip install flask Flask-Session pymongo Flask-Testing pytest
+
+2-)install MongoDB.
+Localhost used for this project but you can use Atlas for online host.
 
 
 Some security measures are: strong password, authentication, manually register as admin with post and role cannot be entered (ineffective if entered), werkzeug.security library is used, if the user is not admin or active user, user cannot access many methods.
