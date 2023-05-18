@@ -4,7 +4,7 @@
 install requirements on cmd: pip install flask Flask-Session pymongo Flask-Testing pytest
 
 
-Some security measures, strong password, authentication, manually register as admin with post and role cannot be entered (ineffective if entered), werkzeug.security library is used, if the user is not admin or active user, user cannot access many methods.
+Some security measures are: strong password, authentication, manually register as admin with post and role cannot be entered (ineffective if entered), werkzeug.security library is used, if the user is not admin or active user, user cannot access many methods.
 
 if you want use all methods,do the following steps in order.
 Create user,change user's role to 'admin' and is_admin=True from directly DB, login, create category, create product, create cart.
