@@ -9,7 +9,7 @@ Create user,change user's role to 'admin' and is_admin=True from directly DB, lo
 
 
 
-#CREATE USER:
+# CREATE USER:
 run main.py and request json like: req link=http://127.0.0.1:5000/register
 POST /register
 {
@@ -29,7 +29,7 @@ POST /login
   "username": "JohnnyTaylorise",
   "password": "pW95fJ2@KXb"
 }
-#CREATE CATEGORY:
+# CREATE CATEGORY:
 POST /categories
  
  
@@ -37,7 +37,7 @@ POST /categories
   "name": "Electronics"
 }
 
-#UPDATE CATEGORY:
+# UPDATE CATEGORY:
 PUT /categories/{category_id}
  
  
@@ -45,12 +45,12 @@ PUT /categories/{category_id}
   "name": "Electronics"
 }
 
-#DELETE CATEGORY:
+# DELETE CATEGORY:
 DELETE /categories/{category_id}
 (No request body needed)
 
 
-#CREATE PRODUCT:
+# CREATE PRODUCT:
 
 POST /products
 
@@ -61,7 +61,7 @@ POST /products
   "category_id": "category_id_here"
 }
 
-#UPDATE PRODUCT:
+# UPDATE PRODUCT:
 
 PUT /products/{product_id}
  
@@ -73,12 +73,12 @@ PUT /products/{product_id}
   "category_id": "category_id_here"
 }
 
-#DELETE PRODUCT:
+# DELETE PRODUCT:
 DELETE /products/{product_id}
 (No request body needed)
 
 
-#CREATE CART:
+# CREATE CART:
 
 POST /cart
 
@@ -88,11 +88,11 @@ POST /cart
   "count": 2
 }
 
-#DELETE CART:
+# DELETE CART:
 DELETE /cart/{cart_item_id}
 (No request body needed)
 
-#ACTIVE/DEACTIVE USER:
+# ACTIVE/DEACTIVE USER:
 
 PUT /users/{user_id}
 
