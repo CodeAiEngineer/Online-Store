@@ -100,7 +100,7 @@ POST /cart
   "count": 2
 }
 
-# DELETE CART:
+# DELETE 1 ITEM IN CART:
 DELETE /cart/{cart_item_id}
 (No request body needed)
 
