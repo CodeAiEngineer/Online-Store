@@ -6,7 +6,7 @@
 2-)install MongoDB.
 Localhost used for this project but you can use Atlas for online host.
 
-3-)run main.py for running app. Write "pytest" for nunninfg automated test.
+3-)Run main.py for running app. Write "pytest" for running automated test.
 
 Some security measures are: strong password, authentication, manually register as admin with post and role cannot be entered (ineffective if entered), werkzeug.security library is used, if the user is not admin or active user, user cannot access many methods.
 
