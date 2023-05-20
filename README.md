@@ -13,6 +13,8 @@ Some security measures are: strong password, authentication, manually register a
 if you want use all methods,do the following steps in order.
 Create user,change user's role to 'admin' and is_admin=True from directly DB, login, create category, create product, create cart.
 
+You MUST login for many methods, otherwise you will get error.
+
 
 # EXAMPLE JSON REQUESTS:
 
