@@ -126,9 +126,10 @@ class Products:
             response.append({
                 'id': str(product['_id']),
                 'name': product['name'],
-                'amount_in_stock': product['amount_in_stock'],
+                # 'amount_in_stock': product['amount_in_stock'],
                 'price': product['price'],
                 'category': category['name']
             })
 
         return jsonify({'products': response}), 200
+    

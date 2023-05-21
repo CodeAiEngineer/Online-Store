@@ -106,12 +106,16 @@ class Carts:
     #Get products in cart.    
 
     def get_products_in_cart(self,user_id):
+        print("user_id:", user_id)
+
         user = self.db.users.find_one({'_id': ObjectId(user_id)})
+        # user = self.db.users.find_one({'username': session['username']})
+        print(user)
         if not user:
             return jsonify({'message': 'Invalid user ID.'}), 400    
         
         cart_items = self.db.cart.find({'user_id': user['_id']})
-        print(cart_items)
+        # print(cart_items)
         
         user = self.db.users.find_one({'username': session['username']})
         if user['is_active'] != True:  
@@ -119,17 +123,25 @@ class Carts:
 
         response = []
         for cart_item in cart_items:
-            product = self.db.products.find_one({'_id': cart_item['product_id']})
-            category = self.db.categories.find_one({'_id': product['category_id']})
-            response.append({
-                'id': str(product['_id']),
-                'name': product['name'],
-                'amount_in_stock': product['amount_in_stock'],
-                'price': product['price'],
-                'category': category['name'],
-                'count': cart_item['count'],
-                'total_price': cart_item['total_price']
-            })
+            cart_item_response = []  # Initialize a list to store items for each cart item
+            for item in cart_item['items']:
+                product = self.db.products.find_one({'_id': item['product_id']})
+                category = self.db.categories.find_one({'_id': product['category_id']})
+                cart_item_response.append({
+                    'id': str(product['_id']),
+                    'name': product['name'],
+                    'amount_in_stock': product['amount_in_stock'],
+                    'price': product['price'],
+                    'category': category['name'],
+                    'count': item['count'],
+                    'total_price': item['total_price']
+                })
+            response.extend(cart_item_response)  # Append the items for this cart item to the overall response
 
         return jsonify({'cart_items': response}), 200
+
+
+            
+      
+
     

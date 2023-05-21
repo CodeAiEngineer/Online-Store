@@ -9,6 +9,7 @@ class Register:
     def __init__(self):
         self.client = MongoClient('mongodb://localhost:27017')
         self.db = self.client['online_store']
+        
 
     def register(self):
         data = request.get_json()
@@ -33,7 +34,7 @@ class Register:
         
         existing_email = self.db.users.find_one({'email': email})
         if existing_email:
-            return jsonify({'message': 'Wmail already exists. Please enter a different email.'}), 400
+            return jsonify({'message': 'Email already exists. Please enter a different email.'}), 400
 
         if len(password) < 8:
             return jsonify({'message': 'Password must be at least 8 characters long.'}), 400
@@ -45,6 +46,11 @@ class Register:
             return jsonify({'message': 'Password must contain at least one lowercase letter.'}), 400
         if not re.search(r'[!@#$%^&*(),.?"+-:{}|<>]', password):
             return jsonify({'message': 'Password must contain at least one special character.'}), 400
+        
+        # Email format check
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if not(re.fullmatch(regex, email)):
+            return jsonify({'message': 'Invalid email format.'}), 400
 
         hashed_password = generate_password_hash(password)
         new_user = {
