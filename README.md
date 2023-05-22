@@ -117,5 +117,5 @@ PUT /users/{user_id}
 
 # GET CART:
 
-GET /cart/{cart_id}
+GET /cart/{user_id}
 
