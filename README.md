@@ -113,6 +113,9 @@ POST /cart
 DELETE /cart/{cart_item_id}
 (No request body needed)
 
+# DELETE ALL CART:
+POST  /cart/clear
+
 # ACTIVE/DEACTIVE USER:
 
 PUT /users/{user_id}
