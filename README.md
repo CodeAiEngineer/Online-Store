@@ -47,6 +47,9 @@ POST /login
   "username": "JohnnyTaylorise",
   "password": "pW95fJ2@KXb"
 }
+
+POST /logout
+
 # CREATE CATEGORY:
 POST /categories
 
