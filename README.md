@@ -115,3 +115,7 @@ PUT /users/{user_id}
   "is_active": false
 }
 
+# GET CART:
+
+GET /cart/{cart_id}
+
