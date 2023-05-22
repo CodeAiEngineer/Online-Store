@@ -15,6 +15,9 @@ Create user,change user's role to 'admin' and is_admin=True from directly DB, lo
 
 You MUST login for many methods, otherwise you will get error.
 
+also:
+If the product is available and when the same product is wanted to be added, it adds the amount on it. Even if you enter a price, the price does not change. You should use the update_product method to change the price.
+
 
 # EXAMPLE JSON REQUESTS:
 
