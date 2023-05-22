@@ -56,7 +56,7 @@ class Products:
             }
             result = self.db.products.insert_one(product)
 
-        return jsonify({'message': 'Product created.', 'product_id': str(product['_id'])}), 201
+        return jsonify({'message': 'Product created or added to existing prodocts amount.', 'product_id': str(product['_id'])}), 201
 
  # Update Product
 
@@ -70,6 +70,7 @@ class Products:
         amount_in_stock = data['amount_in_stock']
         price = data['price']
         category_id = data['category_id']
+        in_stock = data['in_stock']
 
         if not name or amount_in_stock is None or price is None or not category_id:
             return jsonify({'message': 'Invalid product data.'}), 400
@@ -88,8 +89,10 @@ class Products:
             {'$set': {
                 'name': name,
                 'amount_in_stock': amount_in_stock,
+                'in_stock': in_stock,
                 'price': price,
                 'category_id': category['_id']
+                
             }},
             return_document=True
         )

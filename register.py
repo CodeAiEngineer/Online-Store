@@ -22,9 +22,13 @@ class Register:
         is_admin = False
         is_active = True
 
+
         if data.get('is_active') is not None:
             is_active = data['is_active']
-
+        
+        if len(data) > 5 :  
+            return jsonify({'message': 'Too many fields in the request.'}), 400
+        
         if not username or not password or not email or not name or not surname:
             return jsonify({'message': 'Username, password, email, name, and surname are required.'}), 400
 

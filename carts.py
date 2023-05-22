@@ -36,6 +36,14 @@ class Carts:
         if count <= 0:
             return jsonify({'message': 'Count must be greater than zero.'}), 400
 
+        if "username" not in session:
+            return jsonify({'message': 'You are not authorized to perform this action. Please login'}), 400
+        else:
+            user3 = self.db.users.find_one({'username': session['username']})
+
+        if user3 != user:
+            return jsonify({'message': 'You are not authorized to perform this action. Please login and use correct login ID'}), 400
+
         # Calculate total_price based on product price and count
         total_price = product['price'] * count
 
@@ -142,6 +150,32 @@ class Carts:
 
 
             
-      
+    def clear_cart(self):
+        user = self.db.users.find_one({'username': session['username']})
+        print('123*/*/*/*')
+        print(user)
+        # user = self.db.users.find_one({'_id': ObjectId(user_id)})
+        if not user:
+            return jsonify({'message': 'Invalid user ID.'}), 400
+        
+        if "username" not in session:
+            return jsonify({'message': 'You are not authorized to perform this action. Please login'}), 400
+        else:
+            user3 = self.db.users.find_one({'username': session['username']})
+
+        if user3 != user:
+            return jsonify({'message': 'You are not authorized to perform this action. Please login and use correct login ID'}), 400
+
+        if user['is_active'] != True:  
+            return jsonify({'message': 'Deactive users cannot access this method..'}), 401
+        
+        cart = self.db.cart.find_one({'user_id': ObjectId(user['_id'])})
+        if not cart:
+            return jsonify({'message': 'Cart not found.'}), 404
+
+        self.db.cart.delete_one({'_id': cart['_id']})
+
+        return jsonify({'message': 'Cart cleared.'}), 200
+        
 
     

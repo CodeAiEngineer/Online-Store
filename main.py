@@ -36,6 +36,11 @@ def activate_deactivate_user(user_id):
     login_instance = Login()
     return login_instance.activate_deactivate_user(user_id)
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    login_instance = Login()
+    return login_instance.logout()
+
 #CATEGORY
 @app.route('/categories', methods=['POST'])
 def create_category():
@@ -97,6 +102,11 @@ def remove_from_cart(cart_item_id):
 def get_products_in_cart(user_id):
     cart_instance = Carts()
     return cart_instance.get_products_in_cart(user_id)
+
+@app.route('/cart/clear', methods=['POST'])
+def clear_cart():
+    cart_instance = Carts()
+    return cart_instance.clear_cart()
 
 
 if __name__ == '__main__':

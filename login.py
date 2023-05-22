@@ -15,6 +15,10 @@ class Login:
         username = data['username']
         password = data['password']
 
+
+        if len(data) > 2:  
+            return jsonify({'message': 'Too many fields in the request.'}), 400
+        
         if not username or not password:
             return jsonify({'message': 'Username and password are required.'}), 400
 
@@ -28,9 +32,12 @@ class Login:
         is_admin = False
         if user['role'] == 'admin':
             is_admin = True
+        else:
+            user['role'] = 'client'
 
         session['username'] = username  
         session['is_admin'] = is_admin
+        
 
         return jsonify({'message': 'Login successful.', 'is_admin': is_admin, 'token': session.sid}), 200
 
@@ -55,8 +62,14 @@ class Login:
         )
         
         user2= self.db.users.find_one({'_id': ObjectId(user_id)})
+        
 
         if not user:
             return jsonify({'message': 'User not found.'}), 404
 
         return jsonify({'message': 'User updated.', 'user': user2['username']}), 200
+    
+
+    def logout(self):
+        session.clear()
+        return jsonify({'message': 'Logout successful.'}), 200
